@@ -24,6 +24,9 @@ def add():
 
 @app.route('/students.html', methods=['POST','GET'])
 def students():
+	if request.method == 'POST':
+		id = request.form['id']
+		dbHandler.deleteStudent(id)
 	return render_template('/students.html', studentList=dbHandler.listStudents())
 
 if __name__ == '__main__':

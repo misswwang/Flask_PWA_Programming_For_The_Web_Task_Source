@@ -7,12 +7,19 @@
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>DOB</th>
+                <th>Delete ?</th>
             </tr>
             {% for person in studentList %}
             <tr>
                 <td>{{person[1]}}</td>
                 <td>{{person[2]}}</td>
                 <td>{{person[3]}}</td>
+                <td>
+                    <form action="/students.html" method="post">
+                        <input type = "hidden" name="id" value="{{person[0]}}">
+                        <button type = "submit">Delete</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </table>

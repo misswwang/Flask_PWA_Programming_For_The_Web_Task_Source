@@ -21,3 +21,13 @@ def insertStudent(firstname, lastname, dob):
     cur.execute("INSERT INTO students (firstname,lastname,dob) VALUES (?,?,?)", (firstname, lastname, dob))
     con.commit()
     con.close()
+
+
+def deleteStudent(id):
+    con = sql.connect("database/data_source.db")
+    cur = con.cursor()
+    print(id)
+    data = cur.execute("DELETE FROM students WHERE id=?",(id,))
+    con.commit()
+    con.close()
+    return data
