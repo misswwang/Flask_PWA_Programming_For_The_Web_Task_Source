@@ -13,12 +13,18 @@ def index():
 @app.route('/add.html', methods=['POST', 'GET'])
 def add():
 	if request.method=='POST':
-		email = request.form['email']
-		name = request.form['name']
-		dbHandler.insertContact(email,name)
-		return render_template('/add.html', message="Thank you for signing up")
+		firstname = request.form['firstname']
+		lastname = request.form['lastname']
+		dob = request.form['dob']
+		dbHandler.insertStudent(firstname,lastname,dob)
+		return render_template('/add.html', message="Thank you for adding a student")
 	else:
 		return render_template('/add.html')
+
+
+@app.route('/students.html', methods=['POST','GET'])
+def students():
+	return render_template('/students.html', studentList=dbHandler.listStudents())
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

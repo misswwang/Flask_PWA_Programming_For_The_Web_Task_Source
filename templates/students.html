@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Software Class</title>
-    </head>
-    <body>
-        <h1>Software Students</h1>
-        <p>Here are the students in the software engineering class.</p>
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Software Students</h1>
+    <p>Here are the students in the software engineering class.</p>
         <table border="1">
             <tr>
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>DOB</th>
             </tr>
+            {% for person in studentList %}
             <tr>
-                <td>Alan</td>
-                <td>Turing</td>
-                <td>1/1/2007</td>
+                <td>{{person[1]}}</td>
+                <td>{{person[2]}}</td>
+                <td>{{person[3]}}</td>
             </tr>
+            {% endfor %}
         </table>
-    </body>
-</html>
+{% endblock %}
